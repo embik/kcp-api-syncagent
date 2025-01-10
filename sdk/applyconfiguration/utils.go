@@ -19,43 +19,43 @@ limitations under the License.
 package applyconfiguration
 
 import (
-	v1alpha1 "github.com/kcp-dev/api-syncagent/sdk/apis/services/v1alpha1"
+	v1alpha1 "github.com/kcp-dev/api-syncagent/sdk/apis/v1alpha1"
 
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	testing "k8s.io/client-go/testing"
 
+	apisv1alpha1 "github.com/kcp-dev/api-syncagent/sdk/applyconfiguration/apis/v1alpha1"
 	internal "github.com/kcp-dev/api-syncagent/sdk/applyconfiguration/internal"
-	servicesv1alpha1 "github.com/kcp-dev/api-syncagent/sdk/applyconfiguration/services/v1alpha1"
 )
 
 // ForKind returns an apply configuration type for the given GroupVersionKind, or nil if no
 // apply configuration type exists for the given GroupVersionKind.
 func ForKind(kind schema.GroupVersionKind) interface{} {
 	switch kind {
-	// Group=services.syncagent.kcp.io, Version=v1alpha1
+	// Group=syncagent.kcp.io, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithKind("PublishedResource"):
-		return &servicesv1alpha1.PublishedResourceApplyConfiguration{}
+		return &apisv1alpha1.PublishedResourceApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("PublishedResourceSpec"):
-		return &servicesv1alpha1.PublishedResourceSpecApplyConfiguration{}
+		return &apisv1alpha1.PublishedResourceSpecApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("PublishedResourceStatus"):
-		return &servicesv1alpha1.PublishedResourceStatusApplyConfiguration{}
+		return &apisv1alpha1.PublishedResourceStatusApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("RegexResourceLocator"):
-		return &servicesv1alpha1.RegexResourceLocatorApplyConfiguration{}
+		return &apisv1alpha1.RegexResourceLocatorApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("RelatedResourceReference"):
-		return &servicesv1alpha1.RelatedResourceReferenceApplyConfiguration{}
+		return &apisv1alpha1.RelatedResourceReferenceApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("RelatedResourceSpec"):
-		return &servicesv1alpha1.RelatedResourceSpecApplyConfiguration{}
+		return &apisv1alpha1.RelatedResourceSpecApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("ResourceFilter"):
-		return &servicesv1alpha1.ResourceFilterApplyConfiguration{}
+		return &apisv1alpha1.ResourceFilterApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("ResourceLocator"):
-		return &servicesv1alpha1.ResourceLocatorApplyConfiguration{}
+		return &apisv1alpha1.ResourceLocatorApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("ResourceNaming"):
-		return &servicesv1alpha1.ResourceNamingApplyConfiguration{}
+		return &apisv1alpha1.ResourceNamingApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("ResourceProjection"):
-		return &servicesv1alpha1.ResourceProjectionApplyConfiguration{}
+		return &apisv1alpha1.ResourceProjectionApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("SourceResourceDescriptor"):
-		return &servicesv1alpha1.SourceResourceDescriptorApplyConfiguration{}
+		return &apisv1alpha1.SourceResourceDescriptorApplyConfiguration{}
 
 	}
 	return nil
